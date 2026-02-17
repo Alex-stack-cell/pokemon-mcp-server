@@ -9,7 +9,11 @@ const server = new McpServer({
 });
 
 for (const { name, config, handler } of tools) {
-  server.registerTool(name, config, handler as Parameters<typeof server.registerTool>[2]);
+  server.registerTool(
+    name,
+    config,
+    handler as Parameters<typeof server.registerTool>[2],
+  );
 }
 
 const transport = new StdioServerTransport();

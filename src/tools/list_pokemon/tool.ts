@@ -8,11 +8,15 @@ export const listPokemonsTool = {
     inputSchema: {},
   },
   handler: async () => {
+    const pokemons: Pokemon[] = getAllPokemons();
+
     return {
-      content: getAllPokemons().map((pokemon: Pokemon) => ({
-        type: "text" as const,
-        text: JSON.stringify(pokemon, null, 2),
-      })),
+      content: [
+        {
+          type: "text" as const,
+          text: JSON.stringify(pokemons, null, 2),
+        },
+      ],
     };
   },
 };
